@@ -651,3 +651,8 @@ Use CREATE-TEMP-F for creating temp copy."
 
 ;; Command+dにanything-for-documentを割り当て
 (define-key global-map (kbd "s-d") 'anything-for-document)
+
+
+
+
+
