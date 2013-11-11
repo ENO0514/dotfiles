@@ -1542,6 +1542,7 @@ automatically.")
 ;; minibuffer-local-filename-must-match-map.
 (defvar minibuffer-local-filename-must-match-map (make-sparse-keymap)) ;; Emacs 23.1.+
 (defvar minibuffer-local-must-match-filename-map (make-sparse-keymap)) ;; Older Emacsen
+(defvar minibuffer-inactive-mode-map (make-sparse-keymap))
 (dolist (map (list minibuffer-local-filename-completion-map
                    minibuffer-local-completion-map
                    minibuffer-local-must-match-filename-map
@@ -1549,7 +1550,9 @@ automatically.")
                    minibuffer-local-map
                    minibuffer-local-isearch-map
                    minibuffer-local-must-match-map
-                   minibuffer-local-ns-map))
+                   minibuffer-local-ns-map
+                   minibuffer-inactive-mode-map
+                   minibuffer-local-shell-command-map))
   (define-key map "\C-r" 'anything-minibuffer-history))
 
 
@@ -11070,7 +11073,7 @@ other candidate transformers."
     (anything-transform-mapcar
      (lambda (file)
        (if (and (stringp file) (string-match home file))
-           (cons (replace-match "~" nil nil file) file)
+           (replace-match "~" nil nil file)
          file))
      files)))
 
@@ -11544,6 +11547,9 @@ with original attribute value.
    (anything-c-arrange-type-attribute 'file
       '((action (\"Play sound\" . play-sound-file)
          REST ;; Rest of actions (find-file, find-file-other-window, etc...)."
+  (setq anything-additional-type-attributes
+        (delete (assq type anything-additional-type-attributes)
+                anything-additional-type-attributes))
   (add-to-list 'anything-additional-type-attributes
                (cons type
                      (loop with typeattr = (assoc-default
@@ -11796,8 +11802,9 @@ It is drop-in replacement of `yank-pop'.
 You may bind this command to M-y.
 First call open the kill-ring browser, next calls move to next line."
   (interactive)
-  (anything :sources 'anything-c-source-kill-ring
-            :buffer "*anything kill-ring*"))
+  (let ((enable-recursive-minibuffers t))
+    (anything :sources 'anything-c-source-kill-ring
+              :buffer "*anything kill-ring*")))
 
 ;;;###autoload
 (defun anything-minibuffer-history ()
