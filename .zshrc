@@ -209,23 +209,6 @@ alias edit_vhttpd="sudo vim /private/etc/apache2/extra/httpd-vhosts.conf"
 alias start_apache="sudo /usr/sbin/apachectl start"
 alias stop_apache="sudo /usr/sbin/apachectl stop"
 alias restart_apache="sudo /usr/sbin/apachectl restart"
-
-# htdocs apache default
-alias cd_dev='cd /Users/enomotokeisuke/dev-localhost/'
-alias cd_www='cd /var/www/'
-alias cd_wwwdata='cd /Users/enomotokeisuke/dev-localhost/www_data'
-#alias cd_gf2014='cd /Users/enomotokeisuke/dev-localhost/www_data/goodfind/2014'
-alias cd_gf2015='cd /Users/enomotokeisuke/dev-localhost/www_data/2015'
-#alias cd_admin='cd /Users/enomotokeisuke/dev-localhost/www_data/goodfind/admin'
-# htdocs apache2.2.3 for homebrew
-#alias cdhtdocs='cd /usr/local/Cellar/httpd/2.2.23/share/apache2/htdocs'
-# htdocs apache2.4.3 for homebrew
-#alias cdhtdocs='cd /usr/local/apache2/htdocs/' 
-
-# apache_log
-alias less_apache_log="less /private/var/log/apache2/dev-localhost.com-error_log"
-alias less_gflog="cat /private/var/log/apache2/goodfind.com-error_log"
-
 # java
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'
@@ -257,15 +240,6 @@ alias emacs_tm='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
 alias emacs_daemon='/Applications/Emacs.app/Contents/MacOS/Emacs --daemon'
 alias emacs_client='emacsclient -t'
 alias emacs_kill="emacsclient -e '(kill-emacs)'"
-
-# sakura
-alias loginSakura='sudo ssh -i ~/.ssh/id_rsa enomoto@49.212.160.108 -p 51466'
-# goodfind(テスト)
-alias gftest="ssh -p 10044 -A -l enomoto -i ~/.ssh/id_rsa -L 3306:127.0.0.1:3306 www17279ue.sakura.ne.jp"
-# goodfind(本番)
-alias gfmain="ssh -p 10044 -A -l enomoto -i ~/.ssh/id_rsa -L 10044:www1198ug.sakura.ne.jp:10044 www17279ue.sakura.ne.jp"
-# AWS EC2
-alias loginEC2='sudo ssh -i ~/.ssh/enomoto.pem ec2-user@ec2-54-249-195-158.ap-northeast-1.compute.amazonaws.com'
 
 # git
 alias gst='git status'
