@@ -516,7 +516,7 @@
 ;; howm-menuの言語を日本語に
 (setq howm-menu-lang 'ja)
 ;; howmメモを1日1ファイルにする
-; (setq howm-file-name-format "%Y/%m/%Y-%m-%d.howm")
+                                        ; (setq howm-file-name-format "%Y/%m/%Y-%m-%d.howm")
 ;; howm-modeを読み込む
 (when (require 'howm-mode nil t)
   ;; C-c,,でhowm-menuを起動
@@ -628,7 +628,7 @@
 
 (add-hook 'css-mode-hook 'css-mode-hooks)
 
-;;; P163 js2-modeの基本設定(文法チェックも行う)
+;;; P163 js2-modeの基本設定(Syntax Checkも行う)
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
@@ -847,7 +847,7 @@ Use CREATE-TEMP-F for creating temp copy."
                       'flymake-create-temp-inplace))))
 
 (add-to-list 'flymake-allowed-file-name-masks
-             '("\\.html\\'" flymake-html-init))
+             '("\\.html$" flymake-html-init))
 
 ;; tidy error pattern
 (add-to-list 'flymake-err-line-patterns
@@ -1315,3 +1315,10 @@ Use CREATE-TEMP-F for creating temp copy."
 ;; diredバッファに対してtempbufを有効にする
 (add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
 
+;; 改行コード^Mを削除する
+(defun my-delete-M (start end)
+    (interactive "r")
+      (save-restriction
+            (narrow-to-region start end)
+                (goto-char (point-min))
+                    (while (re-search-forward "^M$" nil t) (replace-match "" nil t))))
