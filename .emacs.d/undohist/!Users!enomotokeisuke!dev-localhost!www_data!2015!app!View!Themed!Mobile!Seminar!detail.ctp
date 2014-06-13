@@ -1,2 +1,0 @@
-
-((digest . "2a0b0f1d6f7f276af36b4530235610b8") (undo-list nil ("に" . -1057) nil ("登" . -1058) nil ("録" . -1059) nil ("に" . -5333) nil ("登" . -5334) nil ("録" . -5335) (t . 1384162320) nil ("は" . -2466) nil ("こ" . -2467) nil ("ち" . -2468) nil ("ら" . -2469) (t . 1384162281) nil (384 . 386) nil (#("5" 0 1 (face web-mode-html-attr-value-face tag-name "div" tag-type start part-token attr)) . -384) (t . 1384162252) nil (383 . 384) (t . 1384162211) nil (5653 . 5654) 2962 nil (381 . 384) (t . 1384156815)))
